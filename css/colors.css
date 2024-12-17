@@ -1,0 +1,232 @@
+/* Estilo global */
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background: linear-gradient(to bottom, #8fd3f4, #84fab0);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+}
+
+/* Título */
+.game-title {
+    font-size: 2.5rem;
+    color: #ff69b4;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 0 #ffb3c6;
+}
+
+/* Instrucciones */
+.game-instructions {
+    background: #fffbec;
+    color: #555;
+    border: 2px dashed #ffdd57;
+    border-radius: 15px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* Área del juego */
+.game-area {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Contenedor de colores */
+.colors-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.color-box {
+    width: 100%;
+    aspect-ratio: 1; /* Cuadrado perfecto */
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.color-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.color-box.selected {
+    border: 4px solid #ffd700;
+}
+
+.color-box.matched {
+    cursor: default;
+}
+
+.color-box.matched::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor de nombres */
+.color-names {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.color-name {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    border: none;
+    color: #333;
+}
+
+.color-name:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.color-name.selected {
+    background: #ffd700;
+    color: white;
+}
+
+.color-name.matched {
+    background: #98fb98;
+    color: white;
+    cursor: default;
+}
+
+/* Puntuación */
+.score-container {
+    font-size: 1.5rem;
+    color: #ff6b6b;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+/* Mensaje de victoria */
+.victory-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 100;
+    animation: popIn 0.5s ease-out;
+}
+
+.victory-message h2 {
+    color: #ff69b4;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.victory-content p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.restart-button {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.restart-button:hover {
+    background: #ff8b8b;
+    transform: scale(1.1);
+}
+
+/* Botón de volver */
+.back-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+    transform: scale(1.1);
+}
+
+/* Animación de pop in */
+@keyframes popIn {
+    from {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Elementos decorativos */
+.floating-items {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-item {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.7;
+    animation: float 8s infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}

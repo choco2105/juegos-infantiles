@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juegos Infantiles</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+    <!-- Decoraciones de fondo -->
+    <div class="sun">☀️</div>
+    <div class="cloud cloud-1">☁️</div>
+    <div class="cloud cloud-2">☁️</div>
+    <div class="cloud cloud-3">☁️</div>
+    <div class="tree tree-1">🌳</div>
+    <div class="tree tree-2">🌳</div>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <h1 class="game-title">Juegos Infantiles</h1>
+        <p class="description">¡Elige un juego!</p>
+
+        <!-- Menú de Juegos -->
+        <div class="game-menu">
+            <button class="game-button" onclick="loadGame('memory')">
+                <span class="emoji">🧠</span>
+                <span>Juego de Memoria</span>
+            </button>
+
+            <button class="game-button" onclick="loadGame('colors')">
+                <span class="emoji">🎨</span>
+                <span>Juego de Colores</span>
+            </button>
+
+            <button class="game-button" onclick="loadGame('dragdrop')">
+                <span class="emoji">✋</span>
+                <span>Arrastrar y Soltar</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Sonidos -->
+    <audio id="backSound" src="sounds/back.mp3"></audio>
+    <audio id="clickSound" src="sounds/click.mp3"></audio>
+
+    <!-- Script Principal -->
+    <script>
+        // Elementos de audio
+        const backSound = document.getElementById('backSound');
+        const clickSound = document.getElementById('clickSound');
+
+        // Función para cargar los juegos con sonido
+        function loadGame(gameType) {
+            clickSound.currentTime = 0;
+            clickSound.play();
+
+            setTimeout(() => {
+                switch (gameType) {
+                    case 'memory':
+                        window.location.href = 'memory.html';
+                        break;
+                    case 'colors':
+                        window.location.href = 'colors.html';
+                        break;
+                    case 'dragdrop':
+                        window.location.href = 'dragdrop.html';
+                        break;
+                }
+            }, 300); // Retardo para asegurar que el sonido se escuche
+        }
+
+        // Función para reproducir sonido de "volver"
+        function backToMenu() {
+            backSound.currentTime = 0;
+            backSound.play();
+
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 300);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 Juego de Colores - Juegos Infantiles</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/colors.css">
+</head>
+<body>
+    <!-- Elementos decorativos flotantes -->
+    <div class="floating-items">
+        <div class="floating-item">🌈</div>
+        <div class="floating-item">🎨</div>
+        <div class="floating-item">🌟</div>
+        <div class="floating-item">✨</div>
+        <div class="floating-item">🖌️</div>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- Botón de volver al menú -->
+        <button onclick="backToMenu()" class="back-button" aria-label="Volver al menú principal">
+            🏠 Menú
+        </button>
+
+        <div class="colors-game">
+            <h1 class="game-title">🎨 Juego de Colores 🎨</h1>
+
+            <!-- Instrucciones -->
+            <div class="game-instructions">
+                <p>🖍️ ¡Une cada color con su nombre correcto!</p>
+                <p>👉 Selecciona el nombre y el color correspondientes.</p>
+            </div>
+
+            <!-- Área de juego -->
+            <div class="game-area">
+                <!-- Contenedor de colores -->
+                <div class="colors-container" id="colorsContainer">
+                    <!-- Se generarán dinámicamente con JS -->
+                </div>
+
+                <!-- Contenedor de nombres de colores -->
+                <div class="color-names" id="colorNames">
+                    <!-- Se generarán dinámicamente con JS -->
+                </div>
+            </div>
+
+            <!-- Puntuación -->
+            <div class="score-container">
+                <span>Aciertos: <span id="score">0</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensaje de Victoria -->
+    <div id="victoryMessage" class="victory-message" style="display: none;">
+        <div class="victory-content">
+            <h2>🎉 ¡Felicitaciones! 🎉</h2>
+            <p>¡Has completado el juego de colores!</p>
+            <button onclick="restartGame()" class="restart-button">🔄 Jugar de nuevo</button>
+        </div>
+    </div>
+
+    <!-- Sonidos -->
+    <audio id="clickSound" src="sounds/click.mp3"></audio>
+    <audio id="matchSound" src="sounds/match.mp3"></audio>
+    <audio id="errorSound" src="sounds/error.mp3"></audio>
+    <audio id="successSound" src="sounds/success.mp3"></audio>
+
+    <!-- Script para el menú -->
+    <script>
+        function backToMenu() {
+            window.location.href = "index.html";
+        }
+    </script>
+
+    <!-- Script principal del juego -->
+    <script src="js/colors.js"></script>
+</body>
+</html>

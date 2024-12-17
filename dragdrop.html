@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrastrar y Soltar - Juegos Infantiles</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dragdrop.css">
+</head>
+<body>
+    <!-- Fondo decorativo -->
+    <div class="cloud cloud-1">☁️</div>
+    <div class="cloud cloud-2">☁️</div>
+    <div class="tree tree-1">🌳</div>
+    <div class="tree tree-2">🌳</div>
+
+    <div class="container">
+        <!-- Botón de regreso al menú -->
+        <button onclick="backToMenu()" class="menu-button">🏠 Menú</button>
+
+        <!-- Título del juego -->
+        <h1 class="game-title">✋ Arrastrar y Soltar ✋</h1>
+        <p class="instructions">
+            ¡Arrastra cada figura a su nombre correspondiente! 🎯<br>
+            Al acertar, la figura brillará y se quedará en su lugar. ✨
+        </p>
+
+        <!-- Contenedor de figuras -->
+        <div class="shapes-container" id="shapesContainer">
+            <div class="item" draggable="true" data-shape="círculo">⭕</div>
+            <div class="item" draggable="true" data-shape="cuadrado">⬛</div>
+            <div class="item" draggable="true" data-shape="triángulo">🔺</div>
+            <div class="item" draggable="true" data-shape="corazón">❤️</div>
+            <div class="item" draggable="true" data-shape="estrella">⭐</div>
+            <div class="item" draggable="true" data-shape="luna">🌙</div>
+            <div class="item" draggable="true" data-shape="sol">☀️</div>
+            <div class="item" draggable="true" data-shape="flor">🌸</div>
+        </div>
+
+        <!-- Zonas de destino -->
+        <div class="dropzones-container">
+            <div class="dropzone" data-shape="círculo">Círculo</div>
+            <div class="dropzone" data-shape="cuadrado">Cuadrado</div>
+            <div class="dropzone" data-shape="triángulo">Triángulo</div>
+            <div class="dropzone" data-shape="corazón">Corazón</div>
+            <div class="dropzone" data-shape="estrella">Estrella</div>
+            <div class="dropzone" data-shape="luna">Luna</div>
+            <div class="dropzone" data-shape="sol">Sol</div>
+            <div class="dropzone" data-shape="flor">Flor</div>
+        </div>
+
+        <!-- Contador de progreso -->
+        <div class="progress">
+            Figuras encontradas: <span id="found">0</span>/8
+        </div>
+    </div>
+
+    <!-- Mensaje de Felicitaciones -->
+    <div id="victoryMessage" class="victory-message" style="display: none;">
+        <div class="victory-content">
+            <h2>🎉 ¡Felicidades! 🎉</h2>
+            <p>¡Has encontrado todas las figuras!</p>
+            <button onclick="restartGame()" class="menu-button">🔄 Jugar de nuevo</button>
+        </div>
+    </div>
+
+    <!-- Sonidos -->
+    <audio id="successSound" src="sounds/success.mp3"></audio>
+    <audio id="matchSound" src="sounds/match.mp3"></audio>
+    <audio id="clickSound" src="sounds/click.mp3"></audio>
+
+    <!-- Scripts -->
+    <script src="js/dragdrop.js"></script>
+</body>
+</html>

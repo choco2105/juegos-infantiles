@@ -1,0 +1,117 @@
+/* Variables globales */
+:root {
+    --sky-color: #87CEEB;
+    --grass-color: #90EE90;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background: linear-gradient(180deg, var(--sky-color) 0%, #B0E2FF 100%);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Fondo de césped */
+body::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30vh;
+    background: linear-gradient(180deg, var(--grass-color) 0%, #32CD32 100%);
+    border-top-left-radius: 50% 20%;
+    border-top-right-radius: 50% 20%;
+    z-index: -1;
+}
+
+/* Animaciones globales */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg); 
+    }
+    25% { 
+        transform: translateY(-15px) rotate(5deg); 
+    }
+    50% { 
+        transform: translateY(-30px) rotate(0deg); 
+    }
+    75% { 
+        transform: translateY(-15px) rotate(-5deg); 
+    }
+}
+
+@keyframes appear {
+    from {
+        transform: scale(0.9) translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Elementos decorativos flotantes */
+.floating-items {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-item {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: float 8s infinite;
+    opacity: 0.7;
+}
+
+/* Contenedor base para todas las páginas */
+.container {
+    text-align: center;
+    padding: 3rem;
+    background: var(--card-bg);
+    border-radius: 30px;
+    box-shadow: 0 8px 32px rgba(255, 182, 193, 0.4);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+    max-width: 500px;
+    width: 90%;
+    border: 4px solid rgba(255, 255, 255, 0.9);
+    animation: appear 0.5s ease-out;
+    margin: auto;
+}
+
+/* Botón de volver al menú */
+.back-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    background: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+    transform: scale(1.1);
+}
