@@ -16,7 +16,14 @@ body {
     text-align: center;
     width: 90%;
     max-width: 800px;
+
+    /* Centrado completo */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+
 
 .title {
     color: #ff69b4;
@@ -141,4 +148,55 @@ body {
 
 .hidden {
     display: none;
+}
+/* Estilos Responsivos */
+
+/* =================== MEJORAS RESPONSIVAS =================== */
+
+/* Para pantallas menores a 768px (tablets y móviles medianos) */
+@media (max-width: 768px) {
+    .shapes-container, .dropzones-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+        gap: 0.8rem; /* Espacio entre elementos */
+    }
+
+    .item {
+        font-size: 1.6rem; /* Tamaño más pequeño */
+        padding: 0.5rem; /* Padding reducido */
+        height: auto; /* Altura ajustada automáticamente */
+    }
+
+    .dropzone {
+        padding: 1rem 0.5rem; /* Menor padding */
+        font-size: 0.9rem; /* Texto más pequeño */
+        height: auto;
+    }
+}
+
+/* Para pantallas menores a 480px (móviles pequeños) */
+@media (max-width: 480px) {
+    .shapes-container, .dropzones-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+        gap: 0.5rem; /* Menor espacio entre elementos */
+    }
+
+    .item {
+        font-size: 1.4rem; /* Reducir el tamaño de fuente */
+        padding: 0.4rem; /* Padding más pequeño */
+        height: auto; /* Altura ajustada */
+    }
+
+    .dropzone {
+        font-size: 0.8rem; /* Texto pequeño */
+        padding: 0.8rem 0.4rem; /* Ajustar padding */
+        height: auto;
+    }
+
+    .title {
+        font-size: 1.8rem; /* Título más pequeño */
+    }
+
+    .instructions {
+        font-size: 0.9rem; /* Instrucciones más pequeñas */
+    }
 }

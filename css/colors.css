@@ -6,8 +6,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh; /* Usar altura mínima */
+    overflow-y: auto; /* Permitir scroll vertical */
 }
 
 .container {
@@ -18,7 +18,16 @@ body {
     text-align: center;
     width: 90%;
     max-width: 800px;
+    display: grid; /* Habilita CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Diseño flexible */
+    gap: 1rem; /* Espacio entre elementos */
+    justify-items: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    max-height: 90vh;
+    overflow-y: auto; /* Scroll interno si es necesario */
 }
+
+
 
 /* Título */
 .game-title {
@@ -47,22 +56,25 @@ body {
 }
 
 /* Contenedor de colores */
+/* Contenedor de colores */
 .colors-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Se adapta a la pantalla */
+    gap: 1rem; /* Espacio entre los elementos */
+    justify-items: center; /* Centra cada elemento */
+    margin-bottom: 1.5rem;
 }
 
 .color-box {
-    width: 100%;
-    aspect-ratio: 1; /* Cuadrado perfecto */
-    border-radius: 15px;
-    cursor: pointer;
+    width: 100%; /* Ocupa todo el espacio de la celda */
+    max-width: 150px; /* Evita que se vean muy grandes */
+    aspect-ratio: 3 / 1; /* Proporción rectangular */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
 }
+
+
 
 .color-box:hover {
     transform: scale(1.05);
@@ -89,28 +101,29 @@ body {
 }
 
 /* Contenedor de nombres */
+/* Contenedor de nombres */
 .color-names {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Se adapta a la pantalla */
+    gap: 1rem; /* Espacio entre los elementos */
+    justify-items: center; /* Centra cada elemento */
+    margin-bottom: 1.5rem;
 }
 
 .color-name {
-    background: white;
-    padding: 1rem;
+    width: 100%; /* Ocupa todo el espacio de la celda */
+    max-width: 150px; /* Evita que se vean muy grandes */
+    aspect-ratio: 3 / 1; /* Proporción rectangular */
     border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-size: 1.2rem;
-    border: none;
-    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .color-name:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
+
 
 .color-name.selected {
     background: #ffd700;
@@ -228,5 +241,63 @@ body {
     }
     50% {
         transform: translateY(-15px);
+    }
+}
+/* =================== ESTILOS RESPONSIVOS =================== */
+
+/* Para pantallas menores a 768px (tablets y móviles medianos) */
+@media (max-width: 768px) {
+    .game-area {
+        flex-direction: column; /* Cambia a una sola columna */
+        gap: 1rem; /* Reduce el espacio entre contenedores */
+    }
+
+    .colors-container, .color-names {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+        gap: 0.8rem; /* Reduce el espacio entre elementos */
+    }
+
+    .color-box {
+        aspect-ratio: 1; /* Cuadrados perfectos */
+        border-radius: 10px; /* Bordes más pequeños */
+    }
+
+    .color-name {
+        font-size: 1rem; /* Reduce el tamaño del texto */
+        padding: 0.6rem; /* Reduce el padding */
+    }
+}
+
+/* Para pantallas menores a 480px (móviles pequeños) */
+@media (max-width: 480px) {
+    .game-title {
+        font-size: 1.5rem; /* Reduce el tamaño del título */
+    }
+
+    .game-area {
+        gap: 0.5rem; /* Menor espacio entre secciones */
+    }
+
+    .colors-container, .color-names {
+        grid-template-columns: repeat(1, 1fr); /* Una sola columna */
+        gap: 0.5rem; /* Menor espacio entre elementos */
+    }
+
+    .color-box {
+        height: 60px; /* Ajusta la altura de las cajas */
+        border-radius: 8px;
+    }
+
+    .color-name {
+        font-size: 0.9rem;
+        padding: 0.4rem; /* Más pequeño */
+    }
+
+    .score-container {
+        font-size: 1.2rem; /* Ajusta el tamaño de la puntuación */
+    }
+
+    .victory-message h2 {
+        font-size: 1.5rem; /* Tamaño de felicitaciones */
     }
 }

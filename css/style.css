@@ -115,3 +115,70 @@ body::after {
 .back-button:hover {
     transform: scale(1.1);
 }
+
+/* ==================== NUEVOS ESTILOS RESPONSIVOS ==================== */
+
+/* Estilos generales para pantallas pequeñas */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px; /* Reducir el tamaño del texto */
+        overflow-y: auto; /* Permitir desplazamiento vertical */
+        align-items: flex-start; /* Alinear el contenido al inicio */
+    }
+
+    .container {
+        padding: 1.5rem; /* Reducir el padding */
+        border-radius: 15px; /* Redondear menos */
+        box-shadow: none; /* Opcional: quitar sombras */
+        width: 95%; /* Usar más ancho */
+        margin: 1rem auto;
+    }
+
+    .game-title {
+        font-size: 2rem; /* Reducir tamaño del título */
+    }
+
+    .floating-item {
+        font-size: 1rem; /* Reducir el tamaño de los elementos decorativos */
+    }
+
+    .back-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    /* Ajustar contenedores grid */
+    .shapes-container, .dropzones-container, .colors-container {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en móviles */
+        gap: 0.5rem;
+    }
+
+    .item {
+        font-size: 1.5rem; /* Reducir tamaño de los elementos */
+        padding: 0.7rem;
+    }
+
+    .game-instructions {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-title {
+        font-size: 1.8rem; /* Más pequeño en móviles muy pequeños */
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .shapes-container, .dropzones-container, .colors-container {
+        grid-template-columns: repeat(1, 1fr); /* Una columna */
+    }
+
+    .item {
+        font-size: 1.3rem;
+        padding: 0.5rem;
+    }
+}
